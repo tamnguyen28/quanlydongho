@@ -32,7 +32,6 @@
         </div>
     </div>
     <!-- slider-area-end -->
-
     <!-- product-area-start -->
     <div class="product-area pt-95 xs-mb">
         <div class="container">
@@ -93,6 +92,5 @@
     <?php include "LATER.php" ?>
     <!-- recent-post-area-end -->
 </body>
-
 </html>
 <?php include "includes/footer.php" ?>
