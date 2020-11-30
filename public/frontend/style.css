@@ -1241,9 +1241,17 @@ body {
     bottom: 0;
     visibility: visible;
 }
+.product-wrapper-container{
+    display: -webkit-inline-box;
+    width: 15%;
+    margin-top: 20px;
+    margin-bottom: 50px;
+   
+}
 .product-wrapper {
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 .product-img,
 .most-product-img {
