@@ -1,4 +1,4 @@
-<?php include "includes/header.php"?>
+
 <?php require_once("includes/connection.php");?>
 <?php
 	if(isset($_POST["btn_submit"])){
@@ -7,24 +7,24 @@
 		$email = $_POST["email"];
 		$phone = $_POST["phone"];
 		$address = $_POST["address"];
-		$password = $_POST["pass"];
+		$password = $_POST["password"];
 		$name = $_POST["name"];
 		//Kiểm tra điều kiện bắt buộc đối với các field không được bỏ trống
 		if($username == "" || $email == "" || $phone == "" || $address == "" || $password =="" || $name == ""){
-			echo "<h2>Bạn vui lòng nhập đầy đủ thông tin</h2>";
+			echo '<script language="javascript">';
+     		echo 'alert("Bạn vui lòng nhập đầy đủ thông tin")';
+     		echo '</script>';
 		}else{
-			// header('location:index.php');
-			echo "<h2>Chúc mừng bạn đăng ký thành công</h2>";
+			echo '<script language="javascript">';
+     		echo 'alert("Chúc mừng bạn đăng ký thành công")';
+     		echo '</script>';
 			$sql = "INSERT INTO customers(Name, Address, Phone, Email,  UserName,  Password, Createdate) VALUES ('$name','$address', '$phone', '$email','$username',  '$password', now()) ";
-			//thực thi câu $sql với biến conn lấy từ file connection.php
-			//echo $sql; //exit;
 			mysqli_query($conn,$sql);
-			// echo "<h2>Chúc mừng bạn đã đăng ký thành công</h2>";
-			
-			
+			// header('Location: index.php');
 		}
 	}
 ?>
+<?php include "includes/header.php"?>
 	<br>
 	<!-- user-login-area-start -->
 		<div class="user-login-area mb-70">
@@ -54,7 +54,7 @@
 
 										
 											<p>Email Address<span>*</span></p>
-											<input class = "register-emailaddress-phone" type="text" id="email" name="email"/>
+											<input class = "register-emailaddress-phone" type="email" id="email" name="email"/>
 										
 									</div>
 								</div>
@@ -86,7 +86,7 @@
 							<div class="single-register">
 								
 									<p>Password<span>*</span></p>
-									<input class="register-signup-infor" type="password" id="pass" name="pass" placeholder="Password"/>
+									<input class="register-signup-infor" type="password" id="password" name="password" placeholder="Password"/>
 								
 							</div>
 							<!-- <div class="single-register single-register-3">
