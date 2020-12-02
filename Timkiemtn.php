@@ -1,6 +1,5 @@
 <!-- <div class="tab-pane active" id="Audiobooks"> -->
 <!-- <div class="tab-active owl-carousel"> -->
-
 <div class="product-wrapper">
     <div class="product-img">
         <a href="product-details.php?idproduct=<?php echo $row['ID'] ?>">

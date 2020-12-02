@@ -1,5 +1,3 @@
-<?php include "includes/header.php"?>
-<br>
 <?php include "includes/connection.php";
 	if(isset($_GET['idproduct'])){	
 		$id = $_GET['idproduct'];
@@ -9,6 +7,33 @@
 	$sql_chitiet = mysqli_query($conn, "SELECT * from product WHERE product.ID = $id");
 	$row_chitiet = mysqli_fetch_assoc($sql_chitiet);
 ?>
+<?php
+if(isset($_POST['themgiohang'])){
+	$tensanpham = $_POST['tensanpham'];
+	$sanpham_id = $_POST['sanpham_id'];
+	$gia = $_POST['giasanpham'];
+	$hinhanh = $_POST['hinhanh'];
+	$soluong = $_POST['soluong'];
+	$sql_select_giohang = mysqli_query($conn, "SELECT * FROM giohang WHERE sanpham_id = '$sanpham_id'");
+	$count = mysqli_num_rows($sql_select_giohang);
+	if($count > 0){
+		$row_sanpham = mysqli_fetch_array($sql_select_giohang);
+		$soluong = $row_sanpham['soluong'] + 1;
+		$sql_giohang = "UPDATE giohang SET soluong = '$soluong' WHERE sanpham_id = '$sanpham_id'";
+	}else{
+		$soluong = $soluong;
+		$sql_giohang = "INSERT INTO giohang (tensanpham, sanpham_id, giasanpham, hinhanh, soluong) 
+		VALUES ('$tensanpham', '$sanpham_id', '$gia', '$hinhanh', '$soluong')";
+	}
+	$insert_row = mysqli_query($conn, $sql_giohang);
+	if($insert_row == 0){
+		header('Location:product-details.php?idproduct=' . $sanpham_id);
+	}else{
+		header('Location: giohang.php');
+	}
+}
+?>
+<?php include "includes/header.php"?>
 <!-- product-main-area-start -->
 <div class="product-main-area mb-70">
 			<div class="container">
@@ -58,11 +83,16 @@
 											</div>
 										</div>
 										<div class="product-add-form">
-											<form action="#">
-												<div class="quality-button">
-													<input class="qty" type="number" value="1">
-												</div>
-												<a href="#">Thêm vào giỏ hàng</a>
+											<form action="product-details.php" method="post">
+												<fieldset>
+													<input type="hidden" name="tensanpham" value="<?php echo $row_chitiet['Name'] ?>"/>
+													<input type="hidden" name="sanpham_id" value="<?php echo $row_chitiet['ID'] ?>"/>
+													<input type="hidden" name="giasanpham" value="<?php echo $row_chitiet['Price'] ?>"/>
+													<input type="hidden" name="hinhanh" value="<?php echo $row_chitiet['Image'] ?>"/>
+													<input type="hidden" name="soluong" value="1"/>
+													<input type="submit" name="themgiohang" value="Thêm giỏ hàng" class="button" />
+													<!-- <a href="giohang.php">Add to cart</a> -->
+												</fieldset>
 											</form>
 										</div>
 										<div class="product-social-links">
