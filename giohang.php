@@ -1,26 +1,33 @@
-<?php include "includes/header.php" ?>
-<br />
 <?php 
     include "includes/connection.php";
+?>
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['username']))
+{	header('location: login.php'); exit;
+}
 ?>
 <?php 
 if(isset($_POST['capnhatsoluong'])){
     
     for($i=0; $i<count($_POST['product_id']); $i++){
         $sanpham_id = $_POST['product_id'][$i];
-        $soluong = $_POST['soluong'][$i];
+		$soluong = $_POST['soluong'][$i];
+		$dongia = $_POST['dongia'][$i];
+		$tongtiendb = $soluong * $dongia;
         if($soluong <= 0){
-            $sql_delete = mysqli_query($conn, "DELETE FROM giohang WHERE sanpham_id='$sanpham_id'");
+            $sql_delete = mysqli_query($conn, "DELETE FROM cart WHERE id_product='$sanpham_id'");
         }else{
-            $sql_update = mysqli_query($conn, "UPDATE giohang SET soluong = '$soluong' WHERE sanpham_id='$sanpham_id'");
+            $sql_update = mysqli_query($conn, "UPDATE cart SET quantity = '$soluong', Total_amount = '$tongtiendb' WHERE id_product='$sanpham_id'");
         }
     }
 }else if(isset($_GET['xoa'])){
     $id = $_GET['xoa'];
-    $sql_delete = mysqli_query($conn, "DELETE FROM giohang WHERE id_giohang='$id'");
+    $sql_delete = mysqli_query($conn, "DELETE FROM cart WHERE id_cart='$id'");
 }
 ?>
-
+<?php include "includes/header.php" ?>
+<br />
 		<!-- entry-header-area-start -->
 		<div class="entry-header-area">
 			<div class="container">
@@ -40,7 +47,7 @@ if(isset($_POST['capnhatsoluong'])){
 			<div class="container">
 				<div class="row">
                     <?php
-                    $sql_lay_giohang = mysqli_query($conn, "SELECT * FROM giohang ORDER BY id_giohang DESC");
+                    $sql_lay_giohang = mysqli_query($conn, "SELECT * FROM cart ORDER BY id_cart DESC");
                     ?>
 					<div class="col-lg-12">
 						<form action="giohang.php" method="post">
@@ -63,22 +70,23 @@ if(isset($_POST['capnhatsoluong'])){
                                     $total = 0;
 									while($row = mysqli_fetch_array($sql_lay_giohang))
 									{ 
-                                        $tongtien = $row['soluong'] * $row['giasanpham'];
+                                        $tongtien = $row['quantity'] * $row['price_product'];
                                         $total += $tongtien;
                                         $i++;
                                     ?>
 										<tr>
                                             <td><?php echo $i ?></td>
-											<td class="product-thumbnail"><a href="#"><img src="public/frontend/img/product/<?php echo $row['hinhanh']; ?>" alt=" " class="img-responsive"/></a></td>
-											<td class="product-name"><a href="#"><?php echo $row['tensanpham']; ?></a></td>
-											<td class="product-price"><span id="price" class="amount"><?php echo number_format($row['giasanpham']) . 'vnd';?></span></td>
+											<td class="product-thumbnail"><a href="#"><img src="public/frontend/img/product/<?php echo $row['image_product']; ?>" alt=" " class="img-responsive"/></a></td>
+											<td class="product-name"><a href="#"><?php echo $row['name_product']; ?></a></td>
+											<td class="product-price"><span id="price" class="amount"><?php echo number_format($row['price_product']) . 'vnd';?></span></td>
 											<td class="product-quantity">
-                                                <input type="number" min="1" name="soluong[]" value="<?php echo $row['soluong'];?>">
-                                                <input type="hidden" name="product_id[]" value="<?php echo $row['sanpham_id'];?>">
+                                                <input type="number" min="1" name="soluong[]" value="<?php echo $row['quantity'];?>">
+												<input type="hidden" name="product_id[]" value="<?php echo $row['id_product'];?>">
+												<input type="hidden" name="dongia[]" value="<?php echo $row['price_product'];?>">
                                             </td>
                                             <td class="product-subtotal"><?php echo number_format($tongtien) . 'vnd';?></td>
 											<td class="product-remove">
-                                                <a href="?xoa=<?php echo $row['id_giohang']?>">Xóa</a>
+                                                <a href="?xoa=<?php echo $row['id_cart']?>">Xóa</a>
                                             </td>
 										</tr>
                                     <?php } ?>
@@ -96,7 +104,7 @@ if(isset($_POST['capnhatsoluong'])){
 				</div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                         <div class="wc-proceed-to-checkout">
-                                <a href="thanhtoan.php">Thanh toán</a>
+                                <a href="donhang.php">Thanh toán</a>
                         </div>
                     </div>
                 </div>

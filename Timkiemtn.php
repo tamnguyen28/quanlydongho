@@ -1,9 +1,7 @@
-<!-- <div class="tab-pane active" id="Audiobooks"> -->
-<!-- <div class="tab-active owl-carousel"> -->
-<div class="product-wrapper">
-    <div class="product-img">
+<div class="product-wrapper-tk">
+    <div class="product-img-tk">
         <a href="product-details.php?idproduct=<?php echo $row['ID'] ?>">
-            <img src=<?php echo "public/frontend/img/product/" . $row['Image']; ?> alt="book" class="primary" width="50px" height="50px" />
+            <img src=<?php echo "public/frontend/img/product/" . $row['Image']; ?> alt="book" class="primary-tk" />
         </a>
         <div class="quick-view">
             <a class="action-view" href="#" data-target="#productModal" data-toggle="modal" title="Quick View">

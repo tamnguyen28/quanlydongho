@@ -1,4 +1,10 @@
 <?php include "includes/header-admin.php" ?>
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['dangnhap']))
+{	header('location: admin-dangnhap.php'); exit;
+}
+?>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">

@@ -1,4 +1,3 @@
-
 <?php require_once("includes/connection.php");?>
 <?php
 	if(isset($_POST["btn_submit"])){
@@ -14,13 +13,13 @@
 			echo '<script language="javascript">';
      		echo 'alert("Bạn vui lòng nhập đầy đủ thông tin")';
      		echo '</script>';
-		}else{
+		}else{		
+			$sql = "INSERT INTO customers(Name, Address, Phone, Email,  UserName,  Password, Createdate) VALUES ('$name','$address', '$phone', '$email','$username',  '$password', now()) ";
+			mysqli_query($conn,$sql);
+			header('Location: index.php');
 			echo '<script language="javascript">';
      		echo 'alert("Chúc mừng bạn đăng ký thành công")';
      		echo '</script>';
-			$sql = "INSERT INTO customers(Name, Address, Phone, Email,  UserName,  Password, Createdate) VALUES ('$name','$address', '$phone', '$email','$username',  '$password', now()) ";
-			mysqli_query($conn,$sql);
-			// header('Location: index.php');
 		}
 	}
 ?>

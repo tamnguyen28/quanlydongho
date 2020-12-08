@@ -1,9 +1,11 @@
-
+<?php
+session_start();
+?>
 <?php 
 require_once("includes/connection.php");
 if (isset($_POST["btn_submit"])) {
 	$username = $_POST["username"];
-	$password = $_POST["password"];
+	$password = ($_POST["password"]);
 
 	$username = strip_tags($username);
 	$username = addslashes($username);
@@ -23,7 +25,10 @@ if (isset($_POST["btn_submit"])) {
      		echo 'alert("Tên đăng nhập hoặc mật khẩu không đúng!")';
      		echo '</script>';
 		} else {
-			header('Location: index.php');
+			$row = mysqli_fetch_assoc($query);
+			$_SESSION['idcustomer'] = $row['ID'];
+			$_SESSION['username'] = $username;
+			header('Location: giohang.php');
 		}
 	 } 
  }?>
@@ -51,10 +56,8 @@ if (isset($_POST["btn_submit"])) {
 							</div>
 							<div class="single-login single-login-2">
 								<input type="submit" name="btn_submit" value="Login">
-								<input id="rememberme" type="checkbox" name="rememberme" value="forever">
-								<span>Remember me</span>
 							</div>
-							<a href="#">Lost your password?</a>
+							<p>Chưa có tài khoản ? <a href="dang-ky.php">Đăng ký</a></p>
 						</div>
 					</div>
 				</div>

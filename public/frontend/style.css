@@ -1242,16 +1242,28 @@ body {
     visibility: visible;
 }
 .product-wrapper-container{
-    display: -webkit-inline-box;
+    /* display: -webkit-inline-box;
     width: 15%;
     margin-top: 20px;
+    margin-bottom: 50px; */
     margin-bottom: 50px;
-   
+    display: flex;
+    flex-wrap: wrap;
+    width: 1500px;
 }
 .product-wrapper {
     position: relative;
     overflow: hidden;
     width: 100%;
+}
+.product-wrapper-tk {
+    position: relative;
+    overflow: hidden;
+    width: 250px;
+    margin-top: 20px;
+}
+.product-wrapper-tk img{
+    height:260px ;
 }
 .product-img,
 .most-product-img {

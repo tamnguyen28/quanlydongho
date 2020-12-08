@@ -1,3 +1,32 @@
+<?php include "includes/connection.php";?>
+<?php
+if(isset($_POST['addtocart'])){
+	$tensanpham = $_POST['tensanpham'];
+	$sanpham_id = $_POST['sanpham_id'];
+	$gia = $_POST['giasanpham'];
+	$hinhanh = $_POST['hinhanh'];
+	$soluong = $_POST['soluong'];
+    $sql_select_giohang = mysqli_query($conn, "SELECT * FROM cart WHERE id_product = '$sanpham_id'");
+    $sql_giohang = "";
+	$count = mysqli_num_rows($sql_select_giohang);
+	if($count > 0){
+		$row_sanpham = mysqli_fetch_array($sql_select_giohang);
+        $soluong = $row_sanpham['quantity'] + 1;
+        $tongtiendb = $soluong * $gia;
+		$sql_giohang = "UPDATE cart SET quantity = '$soluong', Total_amount = '$tongtiendb' WHERE id_product = '$sanpham_id'";
+	}else{
+        $soluong = $soluong;
+        $tongtiendb = $soluong * $gia;
+		$sql_giohang = "INSERT INTO cart (name_product, id_product, price_product, image_product, quantity, Total_amount) 
+		VALUES ('$tensanpham', '$sanpham_id', '$gia', '$hinhanh', '$soluong', '$tongtiendb')";
+	}
+	$insert_row = mysqli_query($conn, $sql_giohang);
+	if($insert_row == 0){
+		header('Location:product-details.php?idproduct=' . $sanpham_id);
+	}else{
+		header('Location: giohang.php');
+	}
+}?>
 <?php include "includes/header.php" ?>
 <!doctype html>
 <html class="no-js" lang="en">

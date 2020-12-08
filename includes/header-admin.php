@@ -56,7 +56,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="admin-dangnhap.php"><i class="fa fa-key"></i> Log Out</a></li>
+                <li><a href="admin-dangxuat.php"><i class="fa fa-key"></i> Log Out</a></li>
+                <?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['dangnhap']))
+{	header('location: admin-dangnhap.php'); exit;
+}
+?>
             </ul>
         </li>
         <!-- user login dropdown end -->
@@ -96,10 +102,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>
+                        <span>Quản lý đơn hàng</span>
+                    </a>
+                    <ul class="sub">
+						<li><a href="admin-xulydonhang.php">Đơn hàng</a></li>
+                    </ul>
+                </li>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
                         <span>Quản lý khách hàng</span>
                     </a>
                     <ul class="sub">
-						<li><a href="admin-dskhachhang.php">Danh sách khách hàng</a></li>
+						<li><a href="admin-xulykhachhang.php">Danh sách khách hàng</a></li>
 						
                     </ul>
                 </li>

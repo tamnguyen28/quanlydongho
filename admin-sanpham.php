@@ -1,4 +1,10 @@
 <?php include "includes/connection.php" ?>
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['dangnhap']))
+{	header('location: admin-dangnhap.php'); exit;
+}
+?>
 <?php include "includes/header-admin.php" ?>
 
 <?php
@@ -35,12 +41,13 @@
                             <td>Trademark</td>
                             <td><a href="admin-themsanpham.php">Thêm sản phẩm</a></td>
                         </tr>
+                        
                         <?php include "includes/connection.php";
-                        $result = mysqli_query($conn, "SELECT * FROM product");
+                        $result = mysqli_query($conn, "SELECT * FROM product ORDER BY ID DESC");
                         $row = mysqli_fetch_assoc($result);
                         foreach ($result as $row) { ?>
                             <tr>
-                                <td><?php echo $row['ID'] ?></td>
+                                <td><?php echo $row['ID']; ?></td>
                                 <td><?php echo $row['Name']; ?></td>
                                 <td><?php echo $row['Price']; ?></td>
                                 <td><?php echo $row['Status']; ?></td>

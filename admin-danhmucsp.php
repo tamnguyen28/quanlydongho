@@ -1,4 +1,10 @@
-<?php include "includes/header-admin.php" ?>
+
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['dangnhap']))
+{	header('location: admin-dangnhap.php'); exit;
+}
+?><?php include "includes/header-admin.php" ?>
 <!--main content start-->
 <section id="main-content">
     <section class="wrapper">
@@ -27,7 +33,7 @@
                         $row = mysqli_fetch_assoc($result);
                         foreach ($result as $row) { ?>
                             <tr>
-                                <td><?php echo $row['ID'] ?></td>
+                                <td><?php echo $row['ID_GroupProduct'] ?></td>
                                 <td><?php echo $row['Name_GP']; ?></td>
                             </tr>
                         <?php } ?>

@@ -1,8 +1,4 @@
 <?php
-    // session_start();
-    // if(!isset($_SESSION['dangnhap'])){
-    //     header('Location: admin-dangnhap.php');
-    // }
 if (!isset($_SESSION)) session_start();
 if (!isset($_SESSION['dangnhap']))
 {	header('location: admin-dangnhap.php'); exit;

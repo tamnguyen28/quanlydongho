@@ -1,5 +1,10 @@
 <?php include "includes/connection.php" ?>
-
+<?php
+if (!isset($_SESSION)) session_start();
+if (!isset($_SESSION['dangnhap']))
+{	header('location: admin-dangnhap.php'); exit;
+}
+?>
 <?php
     if(isset($_POST['themsanpham'])){
         $tensanpham = $_POST['tensanpham'];
@@ -66,7 +71,7 @@
                                 <input type="text" class="form-control" name="thuonghieu" value="<?php echo $row_capnhat['Trademark']?>"><br>
                                 <label>ID_GroupProduct</label>
                                 <?php
-                                $sql_danhmuc = mysqli_query($conn,"SELECT * FROM groupproduct ORDER BY ID DESC");
+                                $sql_danhmuc = mysqli_query($conn,"SELECT * FROM groupproduct ORDER BY ID_GroupProduct DESC");
                                 ?>
                                 <select name="danhmuc" class="form-control">
                                     <option value="0">------Chọn danh mục-------</option>
@@ -74,11 +79,11 @@
                                     while ($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
                                         if($id_category_1 == $row_danhmuc['ID']){
                                             ?>
-                                            <option selected value="<?php echo $row_danhmuc['ID'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
+                                            <option selected value="<?php echo $row_danhmuc['ID_GroupProduct'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
                                         <?php
                                         }else{
                                         ?>
-                                    <option value="<?php echo $row_danhmuc['ID'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
+                                    <option value="<?php echo $row_danhmuc['ID_GroupProduct'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
                                     <?php
                                     }
                                 }
@@ -105,7 +110,7 @@
                                 <input type="text" class="form-control" name="thuonghieu" placeholder="Thương hiệu"><br>
                                 <label>ID_GroupProduct</label>
                                 <?php
-                                $sql_danhmuc = mysqli_query($conn,"SELECT * FROM groupproduct ORDER BY ID DESC");
+                                $sql_danhmuc = mysqli_query($conn,"SELECT * FROM groupproduct ORDER BY ID_GroupProduct DESC");
                                 ?>
                                 <select name="danhmuc" class="form-control">
                                     <option value="0">------Chọn danh mục-------</option>
@@ -113,7 +118,7 @@
                                     while ($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
                                     
                                         ?>
-                                    <option value="<?php echo $row_danhmuc['ID'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
+                                    <option value="<?php echo $row_danhmuc['ID_GroupProduct'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
                                     <?php
                                     }
                                     ?>
@@ -127,7 +132,7 @@
                     <div class="col-md-8">
                         <h4>Liệt kê sản phẩm</h4><br>
                         <?php
-                        $sql_select_sp = mysqli_query($conn,"SELECT  product.Status, product.ID, product.Name, product.Price, product.Image, product.Trademark ,groupproduct.ID as 'idgroupproduct' FROM product,groupproduct WHERE product.ID_GroupProduct = groupproduct.ID ORDER BY product.ID DESC");
+                        $sql_select_sp = mysqli_query($conn,"SELECT * FROM product ORDER BY ID DESC ");
                         ?>
                         <table class="table table-bordered">
                             <tr>

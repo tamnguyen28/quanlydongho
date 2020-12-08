@@ -29,7 +29,6 @@
 	<!-- modernizr css -->
 	<script src="public/frontend/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-
 <!-- header-area-start -->
 <header>
 	<!-- header-top-area-start -->
@@ -55,16 +54,28 @@
 									</ul>
 								</div>
 							</li>
+							<!-- <li><a href="#">Danh mục sản phẩm<i class="fa fa-angle-down"></i></a>
+								<div class="header-sub" name="datadanhmuc">
+									<ul>
+										<?php
+										include "includes/connection.php";
+										$sql_groupproduct = mysqli_query($conn, "SELECT * FROM groupproduct WHERE groupproduct.ID_GroupProduct");
+										while ($row = mysqli_fetch_assoc($sql_groupproduct)) {
+										?>
+											<li><a href="danhmuc.php"><?php echo $row['Name_GP'] ?></a></li>
+										<?php } ?>
+									</ul>
+								</div>
+							</li> -->
 						</ul>
 					</div>
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 					<div class="account-area text-right">
 						<ul>
-							<li><a href="dang-ky.php">My Account</a></li>
-							<li><a href="checkout.html">Checkout</a></li>
 							<li><a href="login.php">Sign in</a></li>
 							<li><a href="dang-ky.php">Sign up</a></li>
+							<li><a href="dangxuat.php">Log out</a></li>
 						</ul>
 					</div>
 				</div>
@@ -86,32 +97,32 @@
 				</div>
 				<div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
 					<div class="logo-area text-center logo-xs-mrg">
-						<a href="{{URL::to('/')}}"><img src="public/frontend/img/logo/logo1.png" alt="logo" /></a>
+						<a href="index.php"><img src="public/frontend/img/logo/logo1.png" alt="logo" /></a>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
 					<div class="my-cart">
 						<ul>
 							<li><a href="#"><i class="fa fa-shopping-cart"></i>My Cart</a>
-								<span>2</span>
+								<span>2+</span></span>
 								<div class="mini-cart-sub">
 									<div class="cart-product">
 										<?php
 										include "includes/connection.php";
-										$result = mysqli_query($conn, "SELECT * FROM giohang");
+										$result = mysqli_query($conn, "SELECT * FROM cart");
 										$i = 0;
 										$total = 0;
 										while ($row = mysqli_fetch_assoc($result)) {
-											$tongtien = $row['soluong'] * $row['giasanpham'];
+											$tongtien = $row['quantity'] * $row['price_product'];
 											$total += $tongtien;
 											$i++; ?>
 											<div class="single-cart">
 												<div class="cart-img">
-													<a href="#"><img src="public/frontend/img/product/<?php echo $row['hinhanh']; ?>" alt="book" /></a>
+													<a href="#"><img src="public/frontend/img/product/<?php echo $row['image_product']; ?>" alt="book" /></a>
 												</div>
 												<div class="cart-info">
-													<h5><a href="#"><?php echo $row['tensanpham']; ?></a></h5>
-													<p><?php echo $row['soluong'] ?> x <?php echo $row['giasanpham']; ?></p>
+													<h5><a href="#"><?php echo $row['name_product']; ?></a></h5>
+													<p><?php echo $row['quantity'] ?> x <?php echo $row['price_product']; ?></p>
 												</div>
 												<div class="cart-icon">
 													<a href="#"><i class="fa fa-remove"></i></a>
@@ -120,11 +131,11 @@
 										<?php } ?>
 									</div>
 									<div class="cart-totals">
-										<h5>Total <span><?php echo number_format($total); ?></span></h5>
+										<h5>Tổng tiền <span><?php echo number_format($total); ?></span></h5>
 									</div>
 									<div class="cart-bottom">
-										<a class="view-cart" href="giohang.php">view cart</a>
-										<a href="checkout.html">Check out</a>
+										<a class="view-cart" href="giohang.php">Giỏ hàng</a>
+										<a href="donhang.php">Thanh toán</a>
 									</div>
 								</div>
 							</li>
@@ -159,7 +170,7 @@
 	</div>
 	<!-- main-menu-area-end -->
 	<!-- mobile-menu-area-start -->
-	<div class="mobile-menu-area hidden-md hidden-lg">
+	<!-- <div class="mobile-menu-area hidden-md hidden-lg">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -263,7 +274,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<!-- mobile-menu-area-end -->
 </header>
 <!-- header-area-end -->

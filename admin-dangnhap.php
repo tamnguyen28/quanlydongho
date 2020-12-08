@@ -37,7 +37,7 @@ if (isset($_POST["btn_submit"])) {
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- bootstrap-css -->
-<link rel="stylesheet" href="{{asset('public/backend/css/bootstrap.min.css')}}" >
+<link rel="stylesheet" href="public/backend/css/bootstrap.min.css" >
 <!-- //bootstrap-css -->
 <!-- Custom CSS -->
 <link href="public/backend/css/style.css" rel='stylesheet' type='text/css' />
@@ -71,6 +71,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="public/backend/js/jquery.slimscroll.js"></script>
 <script src="public/backend/js/jquery.nicescroll.js"></script>
 <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
-<script src="js/jquery.scrollTo.js"></script>
+<script src="public/backend/js/jquery.scrollTo.js"></script>
 </body>
 </html>
