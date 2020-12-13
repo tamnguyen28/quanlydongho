@@ -28,10 +28,12 @@ if (isset($_POST['themgiohang'])) {
 		$sql_giohang = "INSERT INTO cart (name_product, id_product, price_product, image_product, quantity, Total_amount) 
 		VALUES ('$tensanpham', '$sanpham_id', '$gia', '$hinhanh', '$soluong', '$tongtiendb')";
 	}
+	// header('Location:product-details.php?idproduct=' . $sanpham_id);
 	$insert_row = mysqli_query($conn, $sql_giohang);
 	if ($insert_row == 0) {
 		header('Location:product-details.php?idproduct=' . $sanpham_id);
-	} else {
+	} 
+	else {
 		header('Location: giohang.php');
 	}
 }

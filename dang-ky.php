@@ -40,47 +40,36 @@
 							<div class="row">
 								<div class="col-xs-12">
 									<div  class="single-register">
-									
 											<p>Username<span>*</span></p>
 											<input class="register-signup-infor" type="text" id="username" name="username"/>
-									
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="single-register">
-
-										
 											<p>Email Address<span>*</span></p>
 											<input class = "register-emailaddress-phone" type="email" id="email" name="email"/>
-										
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 									<div class="single-register">
-										
 											<p>Phone<span>*</span></p>
 											<input class = "register-emailaddress-phone"  type="text" id="phone" name="phone"/>
-										
 									</div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-xs-12">
 									<div class="single-register">
-										
 											<p>Fullname<span>*</span></p>
 											<input class="register-signup-infor" type="text" id="name" name="name"/>
-										
 									</div>
 								</div>
 							</div>
 							<div class="single-register">
-								
 									<p>Address<span>*</span></p>
 									<input class="register-signup-infor" type="text" id="address" name="address" placeholder="Street address"/>
-								
 							</div>
 							<div class="single-register">
 								
@@ -88,19 +77,11 @@
 									<input class="register-signup-infor" type="password" id="password" name="password" placeholder="Password"/>
 								
 							</div>
-							<!-- <div class="single-register single-register-3">
-								<input id="rememberme" type="checkbox" name="rememberme" value="forever">
-								<p class="inline">I agree <a href="#">Terms & Condition</a></p>
-							</div> -->
 							<div class="single-register" align ="center">
-							
 									<input type="submit" name="btn_submit" value="Register">
 							</div>
-							
 						</div>
-						
 					</div>
-					
 				</div>
 </form>
 			</div>

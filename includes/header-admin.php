@@ -51,7 +51,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!-- user login dropdown start-->
         <li class="dropdown">
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                <img alt="" src="images/2.png">
+                <!-- <img alt="" src="images/2.png"> -->
                 <span class="username">My Account</span>
                 <b class="caret"></b>
             </a>
@@ -95,7 +95,7 @@ if (!isset($_SESSION['dangnhap']))
                     </a>
                     <ul class="sub">
 						<li><a href="admin-sanpham.php">Sản phẩm</a></li>
-                        <li><a href="admin-danhmucsp.php">Danh mục sản phẩm</a></li>
+                        <!-- <li><a href="admin-danhmucsp.php">Danh mục sản phẩm</a></li> -->
                         <!-- <li><a href="admin-thuonghieu.php">Thương hiệu</a></li> -->
                     </ul>
                 </li>

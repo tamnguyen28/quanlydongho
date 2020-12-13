@@ -18,17 +18,6 @@
 												<a href="#"><img class="thuonghieu" src="public/frontend/img/thuonghieu/9.png" alt="man"  /></a>
 												<a href="#"><img class="thuonghieu" src="public/frontend/img/thuonghieu/10.png" alt="man" /></a>
 										</div>
-									<!-- </div> -->
-									<!-- <div class="author-right">
-										<span>Share this:</span>
-										<ul>
-											<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-											<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-											<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-											<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-											<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-										</ul>
-									</div> -->
 						</div>
 						<div class="single-blog-content">
 									<div class="single-blog-title">

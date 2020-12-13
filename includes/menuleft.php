@@ -104,54 +104,6 @@
 							</div>
 						</div>
 					</div>	
-
-				<!-- <div class="single-most-product bd mb-18">
-					<div class="most-product-img">
-						<a href="#"><img src="public/frontend/img/product/6.jpg" alt="book" /></a>
-					</div>
-					<div class="most-product-content">
-						<div class="product-rating">
-							<ul>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-							</ul>
-						</div>
-						<h4><a href="#">Endeavor Daytrip</a></h4>
-						<div class="product-price">
-							<ul>
-								<li>$30.00</li>
-								<li class="old-price">$33.00</li>
-							</ul>
-						</div>
-					</div>
-				</div> -->
-
-				<!-- <div class="single-most-product bd mb-18">
-					<div class="most-product-img">
-						<a href="#"><img src="public/frontend/img/product/5.jpg" alt="book" /></a>
-					</div>
-					<div class="most-product-content">
-						<div class="product-rating">
-							<ul>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-								<li><a href="#"><i class="fa fa-star"></i></a></li>
-							</ul>
-						</div>
-						<h4><a href="#">Endeavor Daytrip</a></h4>
-						<div class="product-price">
-							<ul>
-								<li>$30.00</li>
-								<li class="old-price">$33.00</li>
-							</ul>
-						</div>
-					</div>
-				</div> -->
 					<?php } ?>
 			</div>
 		</div>

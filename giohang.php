@@ -57,6 +57,7 @@ if(isset($_POST['capnhatsoluong'])){
 										<tr>
                                             <th class="product-stt">STT</th>
 											<th class="product-thumbnail">Hình ảnh</th>
+											<th class="product-name">Thương hiệu</th>
 											<th class="product-name">Sản phẩm</th>
 											<th class="product-price">Giá tiền</th>
 											<th class="product-quantity">Số lượng</th>
@@ -67,9 +68,14 @@ if(isset($_POST['capnhatsoluong'])){
 									<tbody>
                                     <?php 
                                     $i = 0;	
-                                    $total = 0;
+									$total = 0;	
 									while($row = mysqli_fetch_array($sql_lay_giohang))
-									{ 
+									{ 	
+										$id = $row['id_product'];
+										$sqlgetthuonghieu = "SELECT * FROM product WHERE product.ID = $id";
+										$resultproduct = mysqli_query($conn , $sqlgetthuonghieu);
+										$thuonghieu =  mysqli_fetch_assoc($resultproduct);
+
                                         $tongtien = $row['quantity'] * $row['price_product'];
                                         $total += $tongtien;
                                         $i++;
@@ -77,6 +83,7 @@ if(isset($_POST['capnhatsoluong'])){
 										<tr>
                                             <td><?php echo $i ?></td>
 											<td class="product-thumbnail"><a href="#"><img src="public/frontend/img/product/<?php echo $row['image_product']; ?>" alt=" " class="img-responsive"/></a></td>
+											<td class="product-name"><a href="#"><?php echo $thuonghieu['Trademark']; ?></a></td>
 											<td class="product-name"><a href="#"><?php echo $row['name_product']; ?></a></td>
 											<td class="product-price"><span id="price" class="amount"><?php echo number_format($row['price_product']) . 'vnd';?></span></td>
 											<td class="product-quantity">
@@ -112,9 +119,3 @@ if(isset($_POST['capnhatsoluong'])){
 		</div>
 		<!-- cart-main-area-end -->
 <?php include "includes/footer.php"?>
-
-<!-- <script>
-	document.getElementById('asubmit1').onclick = function() {
-		document.getElementById('formtk1').submit();
-	}
-</script> -->

@@ -5,7 +5,7 @@ if (!isset($_SESSION['dangnhap']))
 {	header('location: admin-dangnhap.php'); exit;
 }
 ?><?php include "includes/header-admin.php" ?>
-<!--main content start-->
+
 <section id="main-content">
     <section class="wrapper">
         <div class="table-agile-info">

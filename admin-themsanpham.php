@@ -42,8 +42,6 @@ if (!isset($_SESSION['dangnhap']))
         $sql_xoa = mysqli_query($conn,"DELETE FROM product WHERE ID = '$id'");
     }
 ?>
-
-
 <?php include "includes/header-admin.php" ?>
 <section id="main-content">
     <section class="wrapper">
@@ -52,7 +50,7 @@ if (!isset($_SESSION['dangnhap']))
                 $id_capnhat = $_GET['capnhat_id'];
                 $sql_capnhat = mysqli_query($conn,"SELECT * FROM product WHERE ID = '$id_capnhat'");
                 $row_capnhat = mysqli_fetch_array($sql_capnhat);
-                $id_category_1 = $row_capnhat['ID'];
+                $id_category_1 = $row_capnhat['ID_GroupProduct'];
         ?>
                     <div class="col-md-4">
                         <h4 align="center">Cập nhật sản phẩm</h4><br>
@@ -77,7 +75,7 @@ if (!isset($_SESSION['dangnhap']))
                                     <option value="0">------Chọn danh mục-------</option>
                                     <?php
                                     while ($row_danhmuc = mysqli_fetch_array($sql_danhmuc)){
-                                        if($id_category_1 == $row_danhmuc['ID']){
+                                        if($id_category_1 == $row_danhmuc['ID_GroupProduct']){
                                             ?>
                                             <option selected value="<?php echo $row_danhmuc['ID_GroupProduct'] ?>"><?php echo $row_danhmuc['Name_GP'] ?></option>
                                         <?php
