@@ -78,7 +78,6 @@
 							<li><a href="login.php">Sign in</a></li>
 							<li><a href="dang-ky.php">Sign up</a></li>
 							<li><a href="dangxuat.php">Log out</a></li>
-							<!-- <li><a href="https://github.com/tamnguyen28/quanlydongho">GITHUP</a></li> -->
 						</ul>
 					</div>
 				</div>

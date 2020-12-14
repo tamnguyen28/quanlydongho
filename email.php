@@ -21,7 +21,7 @@ try {
     $mail->Port = 465; // TCP port lớn connect to
     //Recipients
     $mail->setFrom('watchstyle@gmail.com', 'Mailer');
-    $mail->addAddress('quangtin131299@gmail.com', 'Tâm'); // Add a recipient
+    $mail->addAddress('nhmtam.c3tqcap.a3@gmail.com', 'Tâm'); // Add a recipient
     // $mail->addAddress('ellen@example.com'); // Name is optional
     // $mail->addReplyTo('quangtin131299@gmail.com', 'Information');
     // $mail->addCC('cc@example.com');
@@ -31,17 +31,17 @@ try {
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg'); // Optional name
     //Content
     // $mail->isHTML(true); // Set email format to HTML
-    $mail->Subject = 'Here is the subject';
-    $mail->Body = 'Em yeu anh nhieu lam';
-    $mail->AltBody = 'This is the body in plain text for non-HTML email clients';
+    $mail->Subject = 'Wactchstyle shop';
+    $mail->Body = 'Bạn đã đặt hàng thành công, đơn hàng sẽ vận chuyển đến bạn trong thời gian sớm nhất, cảm ơn bạn!!';
+    $mail->AltBody = 'Shop đồng hồ wacthstyle ';
     if ($mail->send()) {
-        echo 'Message has been sent';
+        echo 'Đặt hàng thành công!!! => Cảm ơn bạn !!!';
     }
 } catch (Exception $e) {
-    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
+    echo 'Đặt hàng thất bại. Mailer Error: ', $mail->ErrorInfo;
 }
     // $to = "nhmtam.c3tqcap.a3@gmail.com";
-    // $subject = 'Wactchstyle';
+    // $subject = 'Wactchstyle shop';
     // $message = 'Bạn đã đặt hàng thành công, đơn hàng sẽ vận chuyển đến bạn trong thời gian sớm nhất, cảm ơn bạn!!';
     // $header = "From: watchstyle@gmail.com";
 
