@@ -84,7 +84,7 @@ if(isset($_POST['capnhatsoluong'])){
                                             <td><?php echo $i ?></td>
 											<td class="product-thumbnail"><a href="#"><img src="public/frontend/img/product/<?php echo $row['image_product']; ?>" alt=" " class="img-responsive"/></a></td>
 											<td class="product-name"><a href="#"><?php echo $thuonghieu['Trademark']; ?></a></td>
-											<td class="product-name"><a href="#"><?php echo $row['name_product']; ?></a></td>
+											<td class="product-name"><a href="product-details.php?idproduct=<?php echo $row['id_product']?>"><?php echo $row['name_product']; ?></a></td>
 											<td class="product-price"><span id="price" class="amount"><?php echo number_format($row['price_product']) . 'vnd';?></span></td>
 											<td class="product-quantity">
                                                 <input type="number" min="1" name="soluong[]" value="<?php echo $row['quantity'];?>">

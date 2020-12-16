@@ -18,14 +18,18 @@ if (isset($_POST['capnhatsanpham'])) {
     $thuonghieu = $_POST['thuonghieu'];
     $danhmuc = $_POST['danhmuc'];
     $path = './uploads/';
-    
-    if ($hinhanh == '') {
-        $sql_update_image = "UPDATE product SET Name = '$tensanpham', Price = '$gia', Status = '$trangthai', Trademark = '$thuonghieu' , ID_GroupProduct = '$danhmuc' WHERE ID = '$id_update'";
-    } else {
-        move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
-        $sql_update_image = "UPDATE product SET Name = '$tensanpham', Price = '$gia', Status = '$trangthai', Image = '$hinhanh', Trademark = '$thuonghieu' , ID_GroupProduct = '$danhmuc' WHERE ID = '$id_update'";
+    $ext = pathinfo($hinhanh, PATHINFO_EXTENSION);
+    if ($ext == 'jpg' || $ext == 'png') {
+        if ($hinhanh == '') {
+            $sql_update_image = "UPDATE product SET Name = '$tensanpham', Price = '$gia', Status = '$trangthai', Trademark = '$thuonghieu' , ID_GroupProduct = '$danhmuc' WHERE ID = '$id_update'";
+        } else {
+            move_uploaded_file($hinhanh_tmp, $path . $hinhanh);
+            $sql_update_image = "UPDATE product SET Name = '$tensanpham', Price = '$gia', Status = '$trangthai', Image = '$hinhanh', Trademark = '$thuonghieu' , ID_GroupProduct = '$danhmuc' WHERE ID = '$id_update'";
+        }
+        mysqli_query($conn, $sql_update_image);
+    }else{
+        echo '<script>alert("file khong hop le")</script>';
     }
-    mysqli_query($conn, $sql_update_image);
 }
 ?>
 <?php
